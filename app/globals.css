@@ -4,16 +4,16 @@
   --font-sans: var(--font-geist), Arial, sans-serif;
   --font-display: var(--font-geist), Arial, sans-serif;
   --font-mono: "SFMono-Regular", "SF Mono", Consolas, monospace;
-  --color-paper: #f2f4f3;
+  --color-paper: #f5f6f7;
   --color-ink: #141d29;
   --color-navy: #04152c;
   --color-blue: #07579a;
-  --color-cyan: #55c2e8;
+  --color-cyan: #67b9dc;
 }
 
 :root {
   color-scheme: light;
-  --page-gutter: clamp(1.25rem, 4vw, 5rem);
+  --page-gutter: clamp(1.25rem, 3vw, 2.5rem);
 }
 
 * {
@@ -31,7 +31,7 @@ body {
   margin: 0;
   min-width: 320px;
   overflow-x: hidden;
-  background: #f2f4f3;
+  background: #ffffff;
   color: #141d29;
   font-family: var(--font-geist), Arial, sans-serif;
   text-rendering: optimizeLegibility;
@@ -73,24 +73,35 @@ button {
 
 .heading-xl {
   font-family: var(--font-geist), Arial, sans-serif;
-  font-size: clamp(2.8rem, 6.2vw, 7rem);
+  font-size: clamp(2.2rem, 3.8vw, 4.2rem);
   font-weight: 520;
-  line-height: 0.96;
-  letter-spacing: -0.065em;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
 }
 
 .heading-xxl {
   font-family: var(--font-geist), Arial, sans-serif;
-  font-size: clamp(4.1rem, 10vw, 11rem);
+  font-size: clamp(2.2rem, 3.8vw, 4.2rem);
   font-weight: 520;
-  line-height: 0.78;
-  letter-spacing: -0.08em;
-  text-transform: uppercase;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+}
+
+.heading-hero {
+  font-family: var(--font-geist), Arial, sans-serif;
+  font-size: clamp(3rem, 5.2vw, 6rem);
+  font-weight: 520;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
 }
 
 .body-lg {
-  font-size: clamp(1rem, 1.25vw, 1.2rem);
-  line-height: 1.75;
+  font-size: clamp(1rem, 1.15vw, 1.16rem);
+  line-height: 1.7;
+}
+
+.section-shell {
+  padding-block: clamp(4.5rem, 7.5vw, 8rem);
 }
 
 .section-label {
@@ -155,27 +166,19 @@ button {
   width: 2.35rem;
   height: 2.35rem;
   place-items: center;
-  border: 1px solid currentColor;
-  transition: transform 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+  border: 1px solid color-mix(in srgb, currentColor 25%, transparent);
+  transition: transform 0.35s ease, border-color 0.35s ease;
 }
 
 .arrow-link:hover .arrow-link__icon,
 .arrow-link:focus-visible .arrow-link__icon {
-  transform: rotate(45deg);
-  background: #55c2e8;
-  color: #04152c;
+  transform: translate(4px, -4px);
+  border-color: currentColor;
 }
 
 .arrow-link:focus-visible {
   outline: 2px solid #55c2e8;
   outline-offset: 4px;
-}
-
-.blueprint-grid {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.24) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px);
-  background-size: 80px 80px;
 }
 
 .detail-label,
@@ -211,7 +214,7 @@ footer a:focus-visible {
   padding-block: 1.25rem;
   color: #04152c;
   font-family: var(--font-geist), Arial, sans-serif;
-  font-size: clamp(1.45rem, 3.4vw, 3.5rem);
+  font-size: clamp(1.35rem, 2.4vw, 2.35rem);
   font-weight: 520;
   line-height: 1.1;
   letter-spacing: -0.045em;
@@ -261,12 +264,13 @@ footer a:focus-visible {
 }
 
 @media (max-width: 640px) {
-  .blueprint-grid {
-    background-size: 48px 48px;
+  .heading-hero {
+    font-size: clamp(2.7rem, 13vw, 3.3rem);
   }
 
+  .heading-xl,
   .heading-xxl {
-    line-height: 0.84;
+    font-size: clamp(2.05rem, 10vw, 2.5rem);
   }
 }
 

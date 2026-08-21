@@ -10,12 +10,12 @@ export function NewsSection() {
   const [featured, ...otherNews] = newsItems;
 
   return (
-    <section id="news" className="bg-paper py-24 sm:py-32 lg:py-44">
+    <section id="news" className="section-shell bg-white">
       <Container>
         <div className="flex flex-col gap-8 border-b border-navy/12 pb-12 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <SectionLabel number="09">Journal</SectionLabel>
-            <h2 className="heading-xxl mt-8 text-navy">News</h2>
+            <SectionLabel number="07">News</SectionLabel>
+            <h2 className="heading-xl mt-8 text-navy">News</h2>
           </div>
           <ArrowLink
             href="http://www.studioschettino.it/notizie/"
@@ -39,7 +39,7 @@ export function NewsSection() {
                   src={featured.image}
                   alt={featured.title}
                   fill
-                  className="object-cover transition-transform duration-1000 group-hover:scale-[1.035]"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
                   sizes="(max-width: 1024px) 100vw, 63vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-transparent to-transparent" />
@@ -56,7 +56,7 @@ export function NewsSection() {
                     {featured.excerpt}
                   </p>
                 </div>
-                <span className="grid size-11 shrink-0 place-items-center border border-navy/18 text-blue transition-colors group-hover:bg-blue group-hover:text-white">
+                <span className="grid size-9 shrink-0 place-items-center text-blue transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
                   <ArrowUpRight size={17} />
                 </span>
               </div>
@@ -77,7 +77,7 @@ export function NewsSection() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
                       sizes="(max-width: 1024px) 170px, (max-width: 1280px) 35vw, 170px"
                     />
                   </div>

@@ -1,106 +1,74 @@
+"use client";
+
 import Image from "next/image";
+import { motion, useReducedMotion } from "motion/react";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 
 const bimActivities = [
-  "Redazione OGI",
-  "Redazione PGI",
+  "Redazione OGI / PGI",
   "Modellazione BIM 3D",
-  "Clash Detection",
-  "Gestione CDE",
-  "Modelli As Built",
+  "Clash Detection / Gestione CDE",
 ];
 
 export function BimSection() {
+  const reduceMotion = useReducedMotion();
+
   return (
-    <section id="bim" className="relative overflow-hidden bg-navy py-28 text-white sm:py-36 lg:py-48">
-      <div className="blueprint-grid pointer-events-none absolute inset-0 opacity-[0.055]" />
-      <div className="pointer-events-none absolute left-[8.333%] top-0 hidden h-full w-px bg-white/[0.08] lg:block" />
-      <div className="pointer-events-none absolute right-[8.333%] top-0 hidden h-full w-px bg-white/[0.08] lg:block" />
-
-      <Container className="relative">
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-end">
-          <Reveal className="lg:col-span-8">
-            <SectionLabel number="05" light>BIM</SectionLabel>
-            <h2 className="mt-10 font-display text-[clamp(7rem,20vw,22rem)] font-medium uppercase leading-[0.62] tracking-[-0.105em] text-white">
-              BIM
-            </h2>
-          </Reveal>
-
-          <div className="lg:col-span-3 lg:col-start-10 lg:pb-2">
+    <section id="bim" className="section-shell overflow-hidden bg-navy text-white">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+          <div className="lg:col-span-5">
             <Reveal>
-              <p className="body-lg text-white/70">
+              <SectionLabel number="04" light>BIM</SectionLabel>
+              <h2 className="heading-xl mt-8 text-white">BIM</h2>
+              <p className="body-lg mt-6 text-white/68">
                 S.I.S. srl è il cuore pulsante di tutte le unità che sviluppa
                 progettazioni integrate, direzione lavori, project e BIM Management.
               </p>
-            </Reveal>
-            <Reveal delay={0.08}>
-              <p className="mt-7 text-sm leading-7 text-white/52">
+              <p className="mt-5 text-sm leading-7 text-white/50">
                 Passione, ricerca e creatività sono gli elementi che guidano il gruppo
                 nella crescita e nel raggiungimento di obiettivi sempre più elevati.
               </p>
-              <ArrowLink
-                href="http://www.studioschettino.it/vim-e-validazioni/"
-                target="_blank"
-                rel="noreferrer"
-                light
-                className="mt-9"
-              >
-                Approfondisci
-              </ArrowLink>
             </Reveal>
-          </div>
-        </div>
 
-        <div className="relative mt-20 sm:mt-28 lg:mt-36 lg:min-h-[860px]">
-          <Reveal className="relative min-h-[470px] overflow-hidden sm:min-h-[680px] lg:w-[79%] lg:min-h-[820px]">
+            <div className="mt-8 border-t border-white/14">
+              {bimActivities.map((activity) => (
+                <div key={activity} className="border-b border-white/12 py-3.5 text-sm text-white/68">
+                  {activity}
+                </div>
+              ))}
+            </div>
+
+            <ArrowLink
+              href="http://www.studioschettino.it/vim-e-validazioni/"
+              target="_blank"
+              rel="noreferrer"
+              light
+              className="mt-8"
+            >
+              Approfondisci
+            </ArrowLink>
+          </div>
+
+          <Reveal className="relative aspect-[4/3] overflow-hidden bg-[#0b2340] lg:col-span-7">
             <Image
               src="/images/bim/bim-model.jpg"
               alt="Modello BIM e nuvola di punti realizzati dallo Studio Schettino"
               fill
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 79vw"
+              sizes="(max-width: 1024px) 100vw, 58vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-navy/58 via-transparent to-transparent" />
-            <div className="absolute inset-x-5 bottom-5 flex items-end justify-between border-t border-white/32 pt-4 sm:inset-x-8 sm:bottom-8">
-              <span className="font-mono text-[0.56rem] uppercase tracking-[0.18em] text-white/70">Point cloud / BIM</span>
-              <span className="font-mono text-[0.56rem] text-cyan">MODEL.01</span>
-            </div>
-          </Reveal>
-
-          <Reveal delay={0.15} className="relative mt-6 ml-auto aspect-[4/5] w-[72%] overflow-hidden border-[6px] border-navy sm:w-[48%] lg:absolute lg:right-0 lg:top-[14%] lg:mt-0 lg:w-[31%]">
-            <Image
-              src="/images/bim/bim-detail.jpg"
-              alt="Dettaglio di modellazione BIM dello Studio Schettino"
-              fill
-              className="object-cover"
-              sizes="(max-width: 640px) 72vw, (max-width: 1024px) 48vw, 31vw"
+            <motion.span
+              className="absolute inset-x-0 bottom-0 h-px origin-left bg-cyan"
+              initial={reduceMotion ? false : { scaleX: 0 }}
+              whileInView={reduceMotion ? undefined : { scaleX: 1 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 1, delay: 0.2 }}
             />
-            <div className="absolute inset-x-4 bottom-4 border-t border-white/35 pt-3 font-mono text-[0.52rem] uppercase tracking-[0.16em] text-white/72">
-              Model / Coordination
-            </div>
           </Reveal>
-        </div>
-
-        <div className="mt-20 border-t border-white/18 sm:mt-28">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3">
-            {bimActivities.map((activity, index) => (
-              <Reveal
-                key={activity}
-                delay={index * 0.04}
-                className="group flex items-center gap-5 border-b border-white/14 py-6 sm:px-6 sm:first:pl-0 lg:min-h-28 lg:border-r lg:[&:nth-child(3n)]:border-r-0"
-              >
-                <span className="font-mono text-[0.56rem] text-cyan">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <p className="font-display text-xl font-medium tracking-[-0.025em] text-white/76 transition-colors group-hover:text-white sm:text-2xl">
-                  {activity}
-                </p>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </Container>
     </section>

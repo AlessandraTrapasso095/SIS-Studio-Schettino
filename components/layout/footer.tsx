@@ -4,7 +4,7 @@ import { Container } from "@/components/ui/container";
 
 export function Footer() {
   return (
-    <footer className="bg-[#e5eaeb] pb-8 pt-12 text-navy sm:pt-16">
+    <footer className="bg-paper pb-8 pt-12 text-navy sm:pt-14">
       <Container>
         <div className="grid gap-12 border-b border-navy/12 pb-12 md:grid-cols-2 lg:grid-cols-[1.4fr_0.8fr_1fr]">
           <div>

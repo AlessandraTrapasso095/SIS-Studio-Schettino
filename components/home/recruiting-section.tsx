@@ -5,56 +5,33 @@ import { SectionLabel } from "@/components/ui/section-label";
 
 export function RecruitingSection() {
   return (
-    <section id="recruiting" className="overflow-hidden bg-white py-24 sm:py-32 lg:py-40">
+    <section id="recruiting" className="bg-paper py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <Reveal>
-            <SectionLabel number="10">Recruiting</SectionLabel>
-            <p className="mt-12 font-display text-[clamp(4rem,9vw,9rem)] font-medium uppercase leading-[0.76] tracking-[-0.08em] text-navy">
-              Join<br /><span className="text-blue">our</span><br />team
-            </p>
-            <p className="mt-8 text-[0.6rem] uppercase tracking-[0.18em] text-ink/42">
-              Elemento grafico della concept demo
+        <div className="grid gap-8 border-y border-navy/12 py-10 lg:grid-cols-12 lg:items-center lg:py-12">
+          <Reveal className="lg:col-span-4">
+            <SectionLabel number="08">Recruiting</SectionLabel>
+            <h2 className="mt-6 font-display text-[clamp(2.1rem,3.5vw,3.5rem)] font-medium tracking-[-0.045em] text-navy">
+              Lavorare con noi
+            </h2>
+          </Reveal>
+
+          <Reveal delay={0.06} className="lg:col-span-5">
+            <p className="text-lg font-medium text-navy">BIM Specialist</p>
+            <p className="mt-2 text-sm leading-7 text-ink/58">
+              BIM Specialist per attività di studio in sede. Junior / Senior · Rende (CS).
             </p>
           </Reveal>
 
-          <Reveal delay={0.12} className="flex flex-col justify-end">
-            <div className="border-t border-navy/18">
-              <div className="flex items-center justify-between gap-4 border-b border-navy/15 py-4">
-                <span className="font-mono text-[0.62rem] text-blue">ID.RC.005.25</span>
-                <span className="border border-blue px-3 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.17em] text-blue">
-                  Aperto
-                </span>
-              </div>
-              <div className="pt-8 sm:pt-10">
-                <h2 className="font-display text-[clamp(3rem,6vw,6rem)] font-medium leading-none tracking-[-0.065em] text-navy">
-                  BIM Specialist
-                </h2>
-                <dl className="mt-9 grid gap-6 border-t border-navy/12 pt-7 text-sm sm:grid-cols-2">
-                  <div>
-                    <dt className="detail-label">Livello formazione</dt>
-                    <dd className="mt-2 text-navy/72">Junior / Senior</dd>
-                  </div>
-                  <div>
-                    <dt className="detail-label">Luogo di lavoro</dt>
-                    <dd className="mt-2 text-navy/72">Calabria · Rende (CS)</dd>
-                  </div>
-                  <div className="sm:col-span-2">
-                    <dt className="detail-label">Profilo</dt>
-                    <dd className="mt-2 text-navy/72">BIM Specialist per attività di studio in sede.</dd>
-                  </div>
-                </dl>
-                <a
-                  href="http://www.studioschettino.it/recruiting/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="mt-9 flex items-center justify-between border-t border-navy/15 pt-5 text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-navy outline-none transition-colors hover:text-blue focus-visible:text-blue"
-                >
-                  Invia la tua candidatura
-                  <ArrowUpRight size={17} />
-                </a>
-              </div>
-            </div>
+          <Reveal delay={0.1} className="lg:col-span-3 lg:text-right">
+            <a
+              href="http://www.studioschettino.it/recruiting/"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-3 text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-navy outline-none transition-colors hover:text-blue focus-visible:ring-2 focus-visible:ring-blue"
+            >
+              Invia la candidatura
+              <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
+            </a>
           </Reveal>
         </div>
       </Container>

@@ -4,67 +4,43 @@ import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
 import { SectionLabel } from "@/components/ui/section-label";
 
-const criteria = [
-  "Affidabilità",
-  "Completezza e adeguatezza",
-  "Leggibilità, coerenza e ripercorribilità",
-  "Compatibilità",
-];
+const criteria = ["Affidabilità", "Completezza e adeguatezza", "Compatibilità"];
 
 export function VerificationSection() {
   return (
-    <section id="verifiche" className="bg-paper py-24 sm:py-32 lg:py-44">
+    <section id="verifiche" className="section-shell bg-white">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-[0.55fr_1.2fr] lg:gap-20">
-          <Reveal>
-            <SectionLabel number="06">Controllo</SectionLabel>
-          </Reveal>
-          <Reveal>
-            <h2 className="font-display text-[clamp(4.6rem,11vw,12rem)] font-medium uppercase leading-[0.74] tracking-[-0.09em] text-navy">
-              Verifica
-              <span className="ml-[13%] mt-3 block text-[0.48em] tracking-[-0.065em] text-blue">dei progetti</span>
-            </h2>
-          </Reveal>
-        </div>
-
-        <div className="mt-16 grid items-start gap-12 lg:mt-24 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
-          <Reveal className="relative aspect-[16/10] overflow-hidden bg-white">
+        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
+          <Reveal className="relative aspect-[16/10] overflow-hidden bg-paper lg:col-span-7">
             <Image
               src="/images/verification/verification-model.png"
               alt="Modello digitale sottoposto a verifica progettuale dallo Studio Schettino"
               fill
-              className="object-cover object-center"
-              sizes="(max-width: 1024px) 100vw, 60vw"
+              className="object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
+              sizes="(max-width: 1024px) 100vw, 58vw"
             />
-            <div className="absolute left-5 top-5 bg-navy px-3 py-2 font-mono text-[0.58rem] uppercase tracking-widest text-white">
-              BIM validation
-            </div>
           </Reveal>
 
-          <div>
+          <div className="lg:col-span-5">
             <Reveal>
-              <h3 className="font-display text-3xl font-medium leading-tight tracking-[-0.04em] text-navy sm:text-4xl">
-                Verifica preventiva della progettazione ai sensi dell’art. 42 D.Lgs.
-                36/2023
+              <SectionLabel number="05">Controllo</SectionLabel>
+              <h2 className="heading-xl mt-8 text-navy">Verifica dei progetti</h2>
+              <h3 className="mt-6 font-display text-[clamp(1.35rem,2vw,2rem)] font-medium leading-snug tracking-[-0.03em] text-navy">
+                Verifica preventiva della progettazione ai sensi dell’art. 42 D.Lgs. 36/2023
               </h3>
-              <p className="mt-7 text-base leading-8 text-ink/65">
+              <p className="mt-5 text-base leading-7 text-ink/62 sm:leading-8">
                 Ciascun elaborato progettuale viene controllato da un Ispettore che è
                 un professionista operante in un settore specifico e pertanto altamente
-                qualificato nel garantire la massima correttezza e qualità del progetto
-                stesso.
+                qualificato nel garantire la massima correttezza e qualità del progetto stesso.
               </p>
             </Reveal>
 
-            <div className="mt-10 border-t border-navy/12">
-              {criteria.map((criterion, index) => (
-                <Reveal
-                  key={criterion}
-                  delay={index * 0.05}
-                  className="flex items-center gap-4 border-b border-navy/12 py-4 text-sm text-navy/75"
-                >
-                  <span className="w-7 shrink-0 font-mono text-[0.56rem] text-blue">{String(index + 1).padStart(2, "0")}</span>
+            <div className="mt-8 border-t border-navy/12">
+              {criteria.map((criterion) => (
+                <div key={criterion} className="flex items-center gap-3 border-b border-navy/10 py-3.5 text-sm text-navy/68">
+                  <span className="size-1.5 bg-blue" aria-hidden="true" />
                   {criterion}
-                </Reveal>
+                </div>
               ))}
             </div>
 
@@ -72,7 +48,7 @@ export function VerificationSection() {
               href="http://www.studioschettino.it/verificheprogetti/"
               target="_blank"
               rel="noreferrer"
-              className="mt-9"
+              className="mt-8"
             >
               Approfondisci
             </ArrowLink>

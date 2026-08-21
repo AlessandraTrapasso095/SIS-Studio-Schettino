@@ -16,15 +16,15 @@ const contactColumns = [
 
 export function ContactSection() {
   return (
-    <section id="contatti" className="bg-paper py-24 sm:py-32 lg:py-40">
+    <section id="contatti" className="section-shell bg-white">
       <Container>
-        <div className="grid gap-12 border-b border-navy/12 pb-16 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20 lg:pb-24">
-          <Reveal>
-            <SectionLabel number="12">Contatti</SectionLabel>
+        <div className="grid gap-10 border-b border-navy/12 pb-12 lg:grid-cols-12 lg:gap-12 lg:pb-16">
+          <Reveal className="lg:col-span-4">
+            <SectionLabel number="09">Contatti</SectionLabel>
             <h2 className="heading-xl mt-10 text-navy">Rende,<br />Cosenza</h2>
           </Reveal>
 
-          <div className="grid gap-12 sm:grid-cols-2">
+          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
             {contactColumns.map((column, index) => (
               <Reveal key={column.label} delay={index * 0.08}>
                 <p className="detail-label">{column.label}</p>
@@ -38,14 +38,14 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="grid gap-12 pt-12 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20 lg:pt-16">
-          <Reveal>
+        <div className="grid gap-10 pt-10 lg:grid-cols-12 lg:gap-12 lg:pt-14">
+          <Reveal className="lg:col-span-4">
             <p className="font-mono text-[0.62rem] uppercase leading-6 tracking-[0.18em] text-ink/42">
               P.IVA 03849810787<br />REA – CS 260790
             </p>
           </Reveal>
 
-          <div>
+          <div className="lg:col-span-7 lg:col-start-6">
             <Reveal>
               <a
                 href="tel:+390984653529"

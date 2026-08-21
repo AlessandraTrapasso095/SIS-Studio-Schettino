@@ -13,7 +13,7 @@ export function Navbar() {
   const reduceMotion = useReducedMotion();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 48);
+    const onScroll = () => setScrolled(window.scrollY > 24);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -37,18 +37,21 @@ export function Navbar() {
 
   return (
     <>
-      <header
-        className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-500 ${
+      <motion.header
+        initial={reduceMotion ? false : { opacity: 0, y: -12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,padding,box-shadow] duration-500 ${
           scrolled || open
-            ? "border-navy/10 bg-paper/92 py-2 shadow-[0_8px_40px_rgba(4,17,36,0.045)] backdrop-blur-xl"
-            : "border-navy/10 bg-transparent py-4 lg:py-5"
+            ? "border-navy/10 bg-white/90 py-2 shadow-[0_10px_32px_rgba(4,21,44,0.04)] backdrop-blur-lg"
+            : "border-transparent bg-white/60 py-3.5 backdrop-blur-sm"
         }`}
       >
         <Container className="flex items-center justify-between gap-5">
           <a
             href="#top"
             aria-label="Studio Schettino — torna all’inizio"
-            className="relative z-10 block shrink-0 outline-none transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:ring-blue"
+            className="block shrink-0 outline-none transition-opacity hover:opacity-75 focus-visible:ring-2 focus-visible:ring-blue"
           >
             <Image
               src="/logo/studio-schettino-transparent.png"
@@ -56,93 +59,80 @@ export function Navbar() {
               width={2172}
               height={724}
               preload
-              className="h-auto w-[152px] sm:w-[182px] xl:w-[214px]"
-              sizes="(max-width: 640px) 152px, (max-width: 1280px) 182px, 214px"
+              className="h-auto w-[146px] sm:w-[166px] xl:w-[178px]"
+              sizes="(max-width: 640px) 146px, (max-width: 1280px) 166px, 178px"
             />
           </a>
 
-          <nav
-            aria-label="Navigazione principale"
-            className={`hidden items-center gap-7 transition-opacity lg:flex xl:gap-9 ${open ? "pointer-events-none opacity-0" : "opacity-100"}`}
-          >
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="nav-link text-navy"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <div className="hidden items-center gap-5 lg:flex xl:gap-7">
+            <nav aria-label="Navigazione principale" className="flex items-center gap-5 xl:gap-7">
+              {navItems.map((item) => (
+                <a key={item.href} href={item.href} className="nav-link text-navy">
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+            <a
+              href="#contatti"
+              className="border border-navy bg-navy px-5 py-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-white outline-none transition-colors hover:bg-blue focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2"
+            >
+              Contattaci
+            </a>
+          </div>
 
           <button
             type="button"
             aria-label={open ? "Chiudi menu" : "Apri menu"}
             aria-expanded={open}
-            aria-controls="fullscreen-menu"
+            aria-controls="mobile-menu"
             onClick={() => setOpen((value) => !value)}
-            className="group flex items-center gap-3 text-[0.62rem] font-semibold uppercase tracking-[0.22em] text-navy outline-none focus-visible:ring-2 focus-visible:ring-blue"
+            className="grid size-11 place-items-center text-navy outline-none focus-visible:ring-2 focus-visible:ring-blue lg:hidden"
           >
-            <span className="hidden sm:block">Menu</span>
-            <span className="grid size-10 place-items-center transition-transform duration-500 group-hover:rotate-90">
-              {open ? <X size={19} /> : <Menu size={19} />}
-            </span>
+            {open ? <X size={20} /> : <Menu size={20} />}
           </button>
         </Container>
-      </header>
+      </motion.header>
 
       <AnimatePresence>
         {open && (
           <motion.div
-            id="fullscreen-menu"
+            id="mobile-menu"
             role="dialog"
             aria-modal="true"
             aria-label="Navigazione"
-            className="fixed inset-0 z-40 overflow-y-auto bg-navy text-white"
-            initial={reduceMotion ? false : { clipPath: "inset(0 0 100% 0)" }}
-            animate={{ clipPath: "inset(0 0 0% 0)" }}
-            exit={reduceMotion ? undefined : { clipPath: "inset(0 0 100% 0)" }}
-            transition={{ duration: 0.72, ease: [0.76, 0, 0.24, 1] }}
+            className="fixed inset-0 z-40 overflow-y-auto bg-navy text-white lg:hidden"
+            initial={reduceMotion ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduceMotion ? undefined : { opacity: 0 }}
+            transition={{ duration: 0.42 }}
           >
-            <div className="blueprint-grid pointer-events-none absolute inset-0 opacity-[0.08]" />
-            <Container className="relative flex min-h-svh flex-col justify-end pb-10 pt-28 sm:pb-14 sm:pt-32 lg:pb-16">
-              <div className="grid gap-10 lg:grid-cols-[1fr_2fr] lg:items-end">
-                <div className="hidden lg:block">
-                  <p className="section-label text-white/45">
-                    <span className="text-cyan">00</span>
-                    <span className="h-px w-8 bg-current" />
-                    Navigazione
-                  </p>
-                  <p className="mt-8 max-w-xs text-sm leading-7 text-white/55">
-                    S.I.S. srl · Studio Schettino Ingegneria<br />
-                    Rende, Cosenza
-                  </p>
-                </div>
+            <Container className="flex min-h-svh flex-col justify-between pb-8 pt-28 sm:pt-32">
+              <nav aria-label="Menu completo" className="border-t border-white/14">
+                {menuItems.map((item, index) => (
+                  <motion.a
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    initial={reduceMotion ? false : { opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: reduceMotion ? 0 : 0.06 + index * 0.035, duration: 0.45 }}
+                    className="flex items-center justify-between border-b border-white/14 py-3.5 outline-none transition-colors hover:text-cyan focus-visible:text-cyan"
+                  >
+                    <span className="font-display text-[clamp(1.35rem,7vw,2.35rem)] font-medium leading-tight tracking-[-0.035em]">
+                      {item.label}
+                    </span>
+                    <span className="font-mono text-[0.55rem] text-white/35">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                  </motion.a>
+                ))}
+              </nav>
 
-                <nav aria-label="Menu completo" className="border-t border-white/15">
-                  {menuItems.map((item, index) => (
-                    <motion.a
-                      key={item.href}
-                      href={item.href}
-                      onClick={() => setOpen(false)}
-                      initial={reduceMotion ? false : { opacity: 0, y: 24 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        delay: reduceMotion ? 0 : 0.16 + index * 0.045,
-                        duration: 0.55,
-                      }}
-                      className="group flex items-center justify-between border-b border-white/15 py-3.5 outline-none transition-colors hover:text-cyan focus-visible:text-cyan sm:py-4"
-                    >
-                      <span className="font-display text-[clamp(1.6rem,4.2vw,3.8rem)] font-medium uppercase leading-none tracking-[-0.04em]">
-                        {item.label}
-                      </span>
-                      <span className="font-mono text-[0.65rem] text-white/35 group-hover:text-cyan">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                    </motion.a>
-                  ))}
-                </nav>
+              <div className="mt-10 border-t border-white/14 pt-6 text-xs leading-6 text-white/50">
+                <p>S.I.S. srl · Rende, Cosenza</p>
+                <a href="mailto:segreteria@studioschettino.it" className="mt-1 block text-white/75">
+                  segreteria@studioschettino.it
+                </a>
               </div>
             </Container>
           </motion.div>

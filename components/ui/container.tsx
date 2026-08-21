@@ -15,7 +15,7 @@ export function Container<T extends ElementType = "div">({
   const Component = as ?? "div";
   return (
     <Component
-      className={`mx-auto w-full max-w-[1680px] px-5 sm:px-8 lg:px-12 xl:px-16 2xl:px-20 ${className}`}
+      className={`mx-auto w-full max-w-[1360px] px-5 sm:px-8 lg:px-10 ${className}`}
       {...props}
     >
       {children}
