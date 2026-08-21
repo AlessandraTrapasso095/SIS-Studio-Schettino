@@ -2,8 +2,6 @@
 
 import Image from "next/image";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
-
 import { Container } from "@/components/ui/container";
 
 const footerLinks = [
@@ -16,105 +14,120 @@ const footerLinks = [
 ];
 
 export function Footer() {
-  const reduceMotion = useReducedMotion();
-
   return (
-    <footer className="overflow-hidden bg-[#021326] pb-8 pt-16 text-white sm:pt-20 lg:pt-24">
+    <footer className="bg-[#021326] text-white">
       <Container>
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-          <p className="font-display text-[clamp(2.8rem,5vw,5.5rem)] font-medium uppercase leading-none tracking-[-0.045em]">
-            Studio Schettino
-          </p>
-          <div className="pb-1 font-mono text-[0.61rem] uppercase tracking-[0.18em]">
-            <p className="text-cyan/75">Ingegneria</p>
-            <p className="mt-2 text-white/42">Rende · Calabria</p>
-          </div>
-        </div>
+        <div className="grid gap-12 border-b border-white/12 py-14 sm:py-16 lg:grid-cols-[1.25fr_0.65fr_1fr] lg:gap-16 lg:py-20">
 
-        <motion.div
-          className="mt-8 h-px origin-left bg-white/18"
-          initial={reduceMotion ? false : { scaleX: 0 }}
-          whileInView={reduceMotion ? undefined : { scaleX: 1 }}
-          viewport={{ once: true, amount: 0.7 }}
-          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
-        />
-
-        <a
-          href="mailto:segreteria@studioschettino.it"
-          className="group block py-10 outline-none focus-visible:ring-2 focus-visible:ring-cyan sm:py-12"
-        >
-          <span className="footer-label">Scrivici</span>
-          <span className="mt-5 flex items-center justify-between gap-4 font-display text-[clamp(1.45rem,3vw,3rem)] font-medium leading-tight tracking-[-0.04em] text-white">
-            <span className="break-all">segreteria@studioschettino.it</span>
-            <ArrowUpRight className="size-6 shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-          </span>
-          <span className="mt-5 block h-px origin-left bg-white/22 transition-transform duration-500 group-hover:scale-x-[0.98]" />
-        </a>
-
-        <div className="grid gap-12 pb-12 sm:pb-16 lg:grid-cols-[1.35fr_0.75fr_0.9fr] lg:gap-16">
+          {/* BRAND */}
           <div>
             <Image
               src="/logo/studio-schettino-transparent.png"
               alt="Studio Schettino Ingegneria"
               width={2172}
               height={724}
-              className="h-auto w-[230px] brightness-0 invert sm:w-[270px]"
+              className="h-auto w-[250px] brightness-0 invert sm:w-[285px]"
             />
-            <p className="mt-7 max-w-sm text-sm leading-7 text-white/54">
-              Progettazioni integrate, direzione lavori, project e BIM Management.
+
+            <p className="mt-7 max-w-[390px] text-[0.95rem] leading-7 text-white/48">
+              Ingegneria, progettazione integrata e BIM.
+              Soluzioni tecniche per infrastrutture, edifici e sistemi complessi.
             </p>
-            <div className="mt-7 text-sm leading-7 text-white/48">
-              <p className="footer-label">Sede legale</p>
-              <address className="mt-3 not-italic">
-                Via Finlandia n. 5<br />87036 Rende (CS)
-              </address>
-            </div>
+
+            <p className="mt-7 font-mono text-[0.56rem] uppercase tracking-[0.18em] text-cyan/65">
+              Rende · Calabria
+            </p>
           </div>
 
+          {/* NAV */}
           <nav aria-label="Navigazione footer">
-            <p className="footer-label">Navigazione</p>
-            <div className="mt-5 grid gap-3.5">
+            <p className="font-mono text-[0.56rem] uppercase tracking-[0.18em] text-white/34">
+              Esplora
+            </p>
+
+            <div className="mt-6 grid gap-3">
               {footerLinks.map(([label, href]) => (
                 <a
                   key={href}
                   href={href}
-                  className="group flex items-center justify-between text-sm text-white/62"
+                  className="group flex max-w-[150px] items-center justify-between text-[0.9rem] text-white/58 transition-colors hover:text-white"
                 >
-                  {label}
-                  <span className="translate-x-0 text-cyan/55 transition-transform duration-300 group-hover:translate-x-1">↗</span>
+                  <span>{label}</span>
+                  <ArrowUpRight
+                    size={12}
+                    className="text-cyan/45 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                  />
                 </a>
               ))}
             </div>
           </nav>
 
+          {/* CONTACT */}
           <div>
-            <p className="footer-label">Contatti</p>
-            <div className="mt-5 text-sm leading-7 text-white/58">
-              <a className="block text-white/82" href="tel:+390984653529">+39 0984 653529</a>
-              <a className="block text-white/82" href="tel:+393299322456">+39 329 9322456</a>
-              <p className="mt-5 footer-label">PEC</p>
-              <a className="mt-2 block break-all" href="mailto:ingegneriaschettinosrl@pec.it">
-                ingegneriaschettinosrl@pec.it
-              </a>
-              <p className="mt-6 text-xs leading-6 text-white/38">
-                P.IVA 03849810787<br />REA CS 260790
-              </p>
-            </div>
+            <p className="font-mono text-[0.56rem] uppercase tracking-[0.18em] text-white/34">
+              Contatti
+            </p>
+
+            <a
+              href="mailto:segreteria@studioschettino.it"
+              className="group mt-6 block border-b border-white/12 pb-5"
+            >
+              <span className="flex items-center justify-between gap-4">
+                <span className="text-[1rem] text-white/82 transition-colors group-hover:text-cyan">
+                  segreteria@studioschettino.it
+                </span>
+
+                <ArrowUpRight
+                  size={15}
+                  className="shrink-0 text-cyan/60 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                />
+              </span>
+            </a>
+
+            <a
+              href="tel:+390984653529"
+              className="mt-5 block text-[1.1rem] text-white/72 transition-colors hover:text-cyan"
+            >
+              +39 0984 653529
+            </a>
+
+            <a
+              href="#contatti"
+              className="group mt-8 inline-flex items-center gap-3 text-[0.58rem] font-semibold uppercase tracking-[0.17em] text-cyan"
+            >
+              Tutti i contatti
+              <ArrowUpRight
+                size={13}
+                className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+              />
+            </a>
           </div>
+
         </div>
 
-        <div className="flex flex-col gap-6 border-t border-white/16 pt-7 text-[0.6rem] uppercase leading-5 tracking-[0.13em] text-white/34 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Studio Schettino · P.IVA 03849810787</p>
-          <p className="max-w-xl sm:text-center">
-            Concept demo realizzato esclusivamente a scopo di presentazione. Sito non ufficiale.
+        {/* BOTTOM */}
+        <div className="flex flex-col gap-5 py-7 text-[0.55rem] uppercase tracking-[0.13em] text-white/28 sm:flex-row sm:items-center sm:justify-between">
+
+          <p>
+            © {new Date().getFullYear()} Studio Schettino
           </p>
+
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <span>P.IVA 03849810787</span>
+            <span>Concept demo non ufficiale</span>
+          </div>
+
           <a
             href="#top"
             aria-label="Torna all’inizio"
-            className="group inline-flex size-10 shrink-0 items-center justify-center rounded-full border border-white/22 text-white/70 outline-none transition-colors hover:border-cyan hover:text-cyan focus-visible:ring-2 focus-visible:ring-cyan"
+            className="group inline-flex size-9 items-center justify-center border border-white/16 text-white/50 transition-colors hover:border-cyan hover:text-cyan"
           >
-            <ArrowUp size={15} className="transition-transform duration-300 group-hover:-translate-y-1" />
+            <ArrowUp
+              size={14}
+              className="transition-transform duration-300 group-hover:-translate-y-1"
+            />
           </a>
+
         </div>
       </Container>
     </footer>

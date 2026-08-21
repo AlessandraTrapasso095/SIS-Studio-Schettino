@@ -12,8 +12,9 @@ export function NewsSection() {
   return (
     <section id="news" className="section-shell bg-white">
       <Container>
-        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-7 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeader number="07" eyebrow="News" title="News" />
+
           <ArrowLink
             href="http://www.studioschettino.it/notizie/"
             target="_blank"
@@ -23,7 +24,7 @@ export function NewsSection() {
           </ArrowLink>
         </div>
 
-        <div className="mt-10 grid gap-12 border-t border-navy/10 pt-10 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
+        <div className="mt-12 grid gap-12 lg:grid-cols-[1.55fr_0.75fr] lg:gap-12 xl:gap-16">
           <Reveal>
             <a
               href={featured.href}
@@ -31,62 +32,77 @@ export function NewsSection() {
               rel="noreferrer"
               className="group block outline-none focus-visible:ring-2 focus-visible:ring-blue"
             >
-              <div className="relative aspect-[16/10] overflow-hidden bg-navy">
+              <div className="relative aspect-[16/11] overflow-hidden bg-navy">
                 <Image
                   src={featured.image}
                   alt={featured.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                  sizes="(max-width: 1024px) 100vw, 63vw"
+                  priority={false}
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                  sizes="(max-width: 1024px) 100vw, 68vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-transparent to-transparent" />
-                <span className="absolute bottom-5 left-5 font-mono text-[0.62rem] text-white sm:bottom-7 sm:left-7">
-                  {featured.date}
-                </span>
-              </div>
-              <div className="flex items-start justify-between gap-6 py-6 sm:py-8">
-                <div>
-                  <h3 className="font-display text-3xl font-medium leading-tight tracking-[-0.045em] text-navy sm:text-4xl">
+
+                <div className="absolute inset-0 bg-gradient-to-t from-navy/70 via-navy/10 to-transparent" />
+
+                <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
+                  <p className="font-mono text-[0.65rem] uppercase tracking-[0.18em] text-white/75">
+                    {featured.date}
+                  </p>
+
+                  <h3 className="mt-4 max-w-3xl font-display text-[2rem] font-medium leading-[1.02] tracking-[-0.045em] text-white sm:text-[2.7rem] xl:text-[3.2rem]">
                     {featured.title}
                   </h3>
-                  <p className="mt-4 max-w-2xl text-sm leading-7 text-ink/58">
-                    {featured.excerpt}
-                  </p>
+
+                  <div className="mt-6 flex items-center gap-3 text-sm font-medium text-white">
+                    <span>Leggi la notizia</span>
+                    <ArrowUpRight
+                      size={17}
+                      className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                    />
+                  </div>
                 </div>
-                <span className="grid size-9 shrink-0 place-items-center text-blue transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
-                  <ArrowUpRight size={17} />
-                </span>
               </div>
+
+              <p className="mt-6 max-w-3xl line-clamp-2 text-[0.95rem] leading-7 text-ink/62">
+                {featured.excerpt}
+              </p>
             </a>
           </Reveal>
 
-          <div className="border-t border-navy/15 lg:border-t-0">
-            {otherNews.map((item, index) => (
+          <div className="flex flex-col gap-10">
+            {otherNews.slice(0, 2).map((item, index) => (
               <Reveal key={item.title} delay={index * 0.08}>
                 <a
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group grid gap-5 border-b border-navy/15 py-7 outline-none focus-visible:ring-2 focus-visible:ring-blue sm:grid-cols-[170px_1fr] lg:grid-cols-1 xl:grid-cols-[170px_1fr]"
+                  className="group block outline-none focus-visible:ring-2 focus-visible:ring-blue"
                 >
-                  <div className="relative aspect-[4/3] overflow-hidden bg-navy">
+                  <div className="relative aspect-[16/9] overflow-hidden bg-navy">
                     <Image
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
-                      sizes="(max-width: 1024px) 170px, (max-width: 1280px) 35vw, 170px"
+                      className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.025]"
+                      sizes="(max-width: 1024px) 100vw, 32vw"
                     />
                   </div>
-                  <div className="flex min-w-0 flex-col justify-between">
-                    <p className="font-mono text-[0.58rem] text-blue">{item.date}</p>
-                    <h3 className="mt-5 font-display text-xl font-medium leading-tight tracking-[-0.035em] text-navy sm:text-2xl">
+
+                  <div className="pt-5">
+                    <div className="flex items-center justify-between gap-4">
+                      <p className="font-mono text-[0.6rem] uppercase tracking-[0.16em] text-blue">
+                        {item.date}
+                      </p>
+
+                      <ArrowUpRight
+                        size={16}
+                        className="shrink-0 text-blue transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+                      />
+                    </div>
+
+                    <h3 className="mt-3 max-w-md font-display text-[1.55rem] font-medium leading-[1.08] tracking-[-0.035em] text-navy xl:text-[1.8rem]">
                       {item.title}
                     </h3>
-                    <ArrowUpRight
-                      size={17}
-                      className="mt-5 text-blue transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                    />
                   </div>
                 </a>
               </Reveal>
