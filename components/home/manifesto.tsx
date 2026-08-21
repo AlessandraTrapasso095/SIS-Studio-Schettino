@@ -14,7 +14,7 @@ export function Manifesto() {
       <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,11,25,0.82)_0%,rgba(2,11,25,0.18)_60%,rgba(2,11,25,0.08)_100%)]" />
       <Container className="relative flex min-h-[78svh] flex-col justify-between py-10 sm:min-h-[90svh] sm:py-14">
         <div className="flex items-center gap-4 text-[0.62rem] uppercase tracking-[0.22em] text-white/60">
-          <span className="text-cyan">03</span>
+          <span className="text-cyan">04</span>
           <span className="h-px w-10 bg-current" />
           <span>Manifesto</span>
         </div>

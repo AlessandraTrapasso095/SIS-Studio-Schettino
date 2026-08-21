@@ -11,6 +11,7 @@ import { NewsSection } from "@/components/home/news-section";
 import { NumbersSection } from "@/components/home/numbers-section";
 import { RecruitingSection } from "@/components/home/recruiting-section";
 import { Services } from "@/components/home/services";
+import { TeamSection } from "@/components/home/team-section";
 import { VerificationSection } from "@/components/home/verification-section";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
         <Hero />
         <IntroStudio />
         <Services />
+        <TeamSection />
         <Manifesto />
         <BimSection />
         <VerificationSection />

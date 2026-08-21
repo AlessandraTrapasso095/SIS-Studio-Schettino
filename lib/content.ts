@@ -29,14 +29,15 @@ export const services: Service[] = [
 export const navItems = [
   { label: "Studio", href: "#studio" },
   { label: "Servizi", href: "#servizi" },
+  { label: "Persone", href: "#team" },
   { label: "Expertise", href: "#bim" },
-  { label: "News", href: "#news" },
   { label: "Contatti", href: "#contatti" },
 ];
 
 export const menuItems = [
   { label: "Chi siamo", href: "#studio" },
   { label: "Servizi", href: "#servizi" },
+  { label: "Team", href: "#team" },
   { label: "BIM", href: "#bim" },
   { label: "Verifiche", href: "#verifiche" },
   { label: "Formazione", href: "#formazione" },
@@ -44,6 +45,81 @@ export const menuItems = [
   { label: "Recruiting", href: "#recruiting" },
   { label: "Certificazioni", href: "#certificazioni" },
   { label: "Contatti", href: "#contatti" },
+];
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  image: string;
+  imagePosition?: string;
+};
+
+export const teamMembers: TeamMember[] = [
+  {
+    name: "Raffaele Schettino",
+    role: "Ingegnere",
+    image: "/images/team/raffaele-schettino.png",
+  },
+  {
+    name: "Sonia Le Piane",
+    role: "Frontoffice",
+    image: "/images/team/sonia-le-piane.jpeg",
+  },
+  {
+    name: "Sara Rizzo",
+    role: "Amministrazione",
+    image: "/images/team/sara-rizzo.jpeg",
+  },
+  {
+    name: "Rossella Falcone",
+    role: "Ingegnere",
+    image: "/images/team/rossella-falcone.jpeg",
+  },
+  {
+    name: "Anna Zicarelli",
+    role: "Ingegnere",
+    image: "/images/team/anna-zicarelli.jpeg",
+  },
+  {
+    name: "Angela Natale",
+    role: "BIM Disegnatore",
+    image: "/images/team/angela-natale.jpeg",
+  },
+  {
+    name: "Maria Elena Pallota",
+    role: "Architetto",
+    image: "/images/team/maria-elena-pallota.jpeg",
+  },
+  {
+    name: "Pietro Libonati",
+    role: "BIM Disegnatore",
+    image: "/images/team/pietro-libonati.jpeg",
+  },
+  {
+    name: "Mariateresa Tursi",
+    role: "Ingegnere",
+    image: "/images/team/mariateresa-tursi.jpg",
+  },
+  {
+    name: "Catia Esposito",
+    role: "Ingegnere",
+    image: "/images/team/catia-esposito.jpeg",
+  },
+  {
+    name: "Giuseppe Nicolini",
+    role: "Ingegnere",
+    image: "/images/team/giuseppe-nicolini.jpeg",
+  },
+  {
+    name: "Massimiliano Colla",
+    role: "Geometra",
+    image: "/images/team/massimiliano-colla.jpeg",
+  },
+  {
+    name: "Salvatore Magno",
+    role: "Ingegnere",
+    image: "/images/team/salvatore-magno.jpeg",
+  },
 ];
 
 export const newsItems = [

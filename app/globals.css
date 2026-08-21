@@ -189,7 +189,7 @@ button {
 }
 
 .footer-label {
-  color: rgba(255, 255, 255, 0.38);
+  color: rgba(4, 21, 44, 0.42);
 }
 
 footer a {
@@ -199,7 +199,7 @@ footer a {
 
 footer a:hover,
 footer a:focus-visible {
-  color: #55c2e8;
+  color: #07579a;
 }
 
 .contact-line {

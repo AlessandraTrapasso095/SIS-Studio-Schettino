@@ -20,7 +20,7 @@ export function ContactSection() {
       <Container>
         <div className="grid gap-12 border-b border-navy/12 pb-16 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20 lg:pb-24">
           <Reveal>
-            <SectionLabel number="11">Contatti</SectionLabel>
+            <SectionLabel number="12">Contatti</SectionLabel>
             <h2 className="heading-xl mt-10 text-navy">Rende,<br />Cosenza</h2>
           </Reveal>
 

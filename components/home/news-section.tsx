@@ -14,7 +14,7 @@ export function NewsSection() {
       <Container>
         <div className="flex flex-col gap-8 border-b border-navy/12 pb-12 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <SectionLabel number="08">Journal</SectionLabel>
+            <SectionLabel number="09">Journal</SectionLabel>
             <h2 className="heading-xxl mt-8 text-navy">News</h2>
           </div>
           <ArrowLink

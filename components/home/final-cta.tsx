@@ -9,7 +9,7 @@ export function FinalCta() {
       <Container className="relative">
         <Reveal>
           <p className="mb-10 flex items-center gap-4 text-[0.62rem] uppercase tracking-[0.22em] text-white/60">
-            <span className="text-cyan">10</span>
+            <span className="text-cyan">11</span>
             <span className="h-px w-10 bg-white/45" />
             Contatto
           </p>

@@ -9,7 +9,7 @@ export function RecruitingSection() {
       <Container>
         <div className="grid gap-14 lg:grid-cols-[1fr_1fr] lg:gap-20">
           <Reveal>
-            <SectionLabel number="09">Recruiting</SectionLabel>
+            <SectionLabel number="10">Recruiting</SectionLabel>
             <p className="mt-12 font-display text-[clamp(4rem,9vw,9rem)] font-medium uppercase leading-[0.76] tracking-[-0.08em] text-navy">
               Join<br /><span className="text-blue">our</span><br />team
             </p>
@@ -19,15 +19,15 @@ export function RecruitingSection() {
           </Reveal>
 
           <Reveal delay={0.12} className="flex flex-col justify-end">
-            <div className="border border-navy/15">
-              <div className="flex items-center justify-between gap-4 border-b border-navy/15 bg-paper px-5 py-4 sm:px-7">
+            <div className="border-t border-navy/18">
+              <div className="flex items-center justify-between gap-4 border-b border-navy/15 py-4">
                 <span className="font-mono text-[0.62rem] text-blue">ID.RC.005.25</span>
                 <span className="border border-blue px-3 py-1 text-[0.56rem] font-semibold uppercase tracking-[0.17em] text-blue">
                   Aperto
                 </span>
               </div>
-              <div className="p-6 sm:p-8">
-                <h2 className="font-display text-4xl font-medium tracking-[-0.045em] text-navy sm:text-5xl">
+              <div className="pt-8 sm:pt-10">
+                <h2 className="font-display text-[clamp(3rem,6vw,6rem)] font-medium leading-none tracking-[-0.065em] text-navy">
                   BIM Specialist
                 </h2>
                 <dl className="mt-9 grid gap-6 border-t border-navy/12 pt-7 text-sm sm:grid-cols-2">

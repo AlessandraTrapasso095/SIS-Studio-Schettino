@@ -19,7 +19,7 @@ export function FormationCertifications() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
           <Reveal>
-            <SectionLabel number="06">Conoscenza</SectionLabel>
+            <SectionLabel number="07">Conoscenza</SectionLabel>
             <h2 className="heading-xl mt-10 text-navy">Formazione</h2>
             <p className="mt-7 max-w-lg text-base leading-8 text-ink/64">
               Alcuni dei nostri corsi, dalle attività antincendio alla sicurezza, ai
@@ -69,7 +69,7 @@ export function FormationCertifications() {
         <div id="certificazioni" className="mt-28 border-t border-navy/12 pt-16 sm:mt-36 sm:pt-20 lg:mt-44">
           <div className="grid gap-12 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20">
             <Reveal>
-              <SectionLabel number="07">Sistema qualità</SectionLabel>
+              <SectionLabel number="08">Sistema qualità</SectionLabel>
               <h2 className="heading-xl mt-10 text-navy">Certificazioni</h2>
             </Reveal>
             <div>
@@ -79,19 +79,20 @@ export function FormationCertifications() {
                   valutato e convalidato.
                 </p>
               </Reveal>
-              <div className="mt-12 grid border-l border-t border-navy/12 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="mt-12 border-t border-navy/15">
                 {certifications.map((certification, index) => (
                   <Reveal
                     key={certification}
                     delay={index * 0.05}
-                    className="group flex min-h-36 flex-col justify-between border-b border-r border-navy/12 p-5 transition-colors hover:bg-paper sm:min-h-44 sm:p-7"
+                    className="group grid min-h-24 grid-cols-[72px_1fr] items-center border-b border-navy/15 py-5 sm:min-h-28 sm:grid-cols-[120px_1fr_32px]"
                   >
                     <span className="font-mono text-[0.58rem] text-blue">
                       CERT.{String(index + 1).padStart(2, "0")}
                     </span>
-                    <p className="font-display text-2xl font-medium tracking-[-0.035em] text-navy">
+                    <p className="font-display text-[clamp(1.8rem,3.5vw,3.8rem)] font-medium leading-none tracking-[-0.055em] text-navy transition-transform duration-500 group-hover:translate-x-2">
                       {certification}
                     </p>
+                    <span className="hidden size-2 border border-blue group-hover:bg-blue sm:block" aria-hidden="true" />
                   </Reveal>
                 ))}
               </div>

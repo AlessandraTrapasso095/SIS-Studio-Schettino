@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Check } from "lucide-react";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
@@ -18,17 +17,18 @@ export function VerificationSection() {
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.55fr_1.2fr] lg:gap-20">
           <Reveal>
-            <SectionLabel number="05">Controllo</SectionLabel>
+            <SectionLabel number="06">Controllo</SectionLabel>
           </Reveal>
           <Reveal>
-            <h2 className="heading-xxl text-navy">
-              Verifica<br />dei progetti
+            <h2 className="font-display text-[clamp(4.6rem,11vw,12rem)] font-medium uppercase leading-[0.74] tracking-[-0.09em] text-navy">
+              Verifica
+              <span className="ml-[13%] mt-3 block text-[0.48em] tracking-[-0.065em] text-blue">dei progetti</span>
             </h2>
           </Reveal>
         </div>
 
         <div className="mt-16 grid items-start gap-12 lg:mt-24 lg:grid-cols-[1.2fr_0.8fr] lg:gap-20">
-          <Reveal className="relative aspect-[16/10] overflow-hidden border border-navy/10 bg-white">
+          <Reveal className="relative aspect-[16/10] overflow-hidden bg-white">
             <Image
               src="/images/verification/verification-model.png"
               alt="Modello digitale sottoposto a verifica progettuale dallo Studio Schettino"
@@ -62,9 +62,7 @@ export function VerificationSection() {
                   delay={index * 0.05}
                   className="flex items-center gap-4 border-b border-navy/12 py-4 text-sm text-navy/75"
                 >
-                  <span className="grid size-7 shrink-0 place-items-center border border-blue/30 text-blue">
-                    <Check size={13} strokeWidth={1.8} />
-                  </span>
+                  <span className="w-7 shrink-0 font-mono text-[0.56rem] text-blue">{String(index + 1).padStart(2, "0")}</span>
                   {criterion}
                 </Reveal>
               ))}
