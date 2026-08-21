@@ -95,13 +95,21 @@ button {
   letter-spacing: -0.055em;
 }
 
+.heading-hero-brand {
+  font-family: var(--font-geist), Arial, sans-serif;
+  font-size: clamp(3.8rem, 7vw, 7.5rem);
+  font-weight: 560;
+  line-height: 0.86;
+  letter-spacing: -0.065em;
+}
+
 .body-lg {
   font-size: clamp(1rem, 1.15vw, 1.16rem);
   line-height: 1.7;
 }
 
 .section-shell {
-  padding-block: clamp(4.5rem, 7.5vw, 8rem);
+  padding-block: 4.5rem;
 }
 
 .section-label {
@@ -192,7 +200,7 @@ button {
 }
 
 .footer-label {
-  color: rgba(4, 21, 44, 0.42);
+  color: rgba(255, 255, 255, 0.42);
 }
 
 footer a {
@@ -202,7 +210,7 @@ footer a {
 
 footer a:hover,
 footer a:focus-visible {
-  color: #07579a;
+  color: #67b9dc;
 }
 
 .contact-line {
@@ -271,6 +279,22 @@ footer a:focus-visible {
   .heading-xl,
   .heading-xxl {
     font-size: clamp(2.05rem, 10vw, 2.5rem);
+  }
+
+  .heading-hero-brand {
+    font-size: clamp(3.15rem, 16vw, 4.2rem);
+  }
+}
+
+@media (min-width: 640px) {
+  .section-shell {
+    padding-block: 5.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-shell {
+    padding-block: 7rem;
   }
 }
 

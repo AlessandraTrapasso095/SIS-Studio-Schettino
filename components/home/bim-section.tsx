@@ -17,7 +17,7 @@ export function BimSection() {
   const reduceMotion = useReducedMotion();
 
   return (
-    <section id="bim" className="section-shell overflow-hidden bg-navy text-white">
+    <section id="bim" className="section-shell overflow-hidden border-t border-white/8 bg-[#0a2744] text-white">
       <Container>
         <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
           <div className="lg:col-span-5">

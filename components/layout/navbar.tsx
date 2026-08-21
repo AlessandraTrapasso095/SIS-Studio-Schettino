@@ -26,6 +26,13 @@ export function Navbar() {
     };
   }, [open]);
 
+  const onDark = open || !scrolled;
+  const headerStyle = open
+    ? "border-white/10 bg-navy/95 py-2.5 backdrop-blur-xl"
+    : scrolled
+      ? "border-navy/10 bg-white/[0.92] py-2 shadow-[0_10px_32px_rgba(4,21,44,0.04)] backdrop-blur-lg"
+      : "border-transparent bg-transparent py-3.5";
+
   useEffect(() => {
     if (!open) return;
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -41,11 +48,7 @@ export function Navbar() {
         initial={reduceMotion ? false : { opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,padding,box-shadow] duration-500 ${
-          scrolled || open
-            ? "border-navy/10 bg-white/90 py-2 shadow-[0_10px_32px_rgba(4,21,44,0.04)] backdrop-blur-lg"
-            : "border-transparent bg-white/60 py-3.5 backdrop-blur-sm"
-        }`}
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,padding,box-shadow] duration-500 ${headerStyle}`}
       >
         <Container className="flex items-center justify-between gap-5">
           <a
@@ -59,7 +62,7 @@ export function Navbar() {
               width={2172}
               height={724}
               preload
-              className="h-auto w-[146px] sm:w-[166px] xl:w-[178px]"
+              className={`h-auto w-[146px] transition-[filter] duration-500 sm:w-[166px] xl:w-[178px] ${onDark ? "brightness-0 invert" : ""}`}
               sizes="(max-width: 640px) 146px, (max-width: 1280px) 166px, 178px"
             />
           </a>
@@ -67,14 +70,18 @@ export function Navbar() {
           <div className="hidden items-center gap-5 lg:flex xl:gap-7">
             <nav aria-label="Navigazione principale" className="flex items-center gap-5 xl:gap-7">
               {navItems.map((item) => (
-                <a key={item.href} href={item.href} className="nav-link text-navy">
+                <a key={item.href} href={item.href} className={`nav-link transition-colors duration-500 ${onDark ? "text-white" : "text-navy"}`}>
                   {item.label}
                 </a>
               ))}
             </nav>
             <a
               href="#contatti"
-              className="border border-navy bg-navy px-5 py-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] text-white outline-none transition-colors hover:bg-blue focus-visible:ring-2 focus-visible:ring-blue focus-visible:ring-offset-2"
+              className={`border px-5 py-3 text-[0.61rem] font-semibold uppercase tracking-[0.16em] outline-none transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-cyan focus-visible:ring-offset-2 ${
+                onDark
+                  ? "border-white/55 text-white hover:border-white hover:bg-white hover:text-navy focus-visible:ring-offset-navy"
+                  : "border-navy bg-navy text-white hover:bg-blue"
+              }`}
             >
               Contattaci
             </a>
@@ -86,7 +93,7 @@ export function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-menu"
             onClick={() => setOpen((value) => !value)}
-            className="grid size-11 place-items-center text-navy outline-none focus-visible:ring-2 focus-visible:ring-blue lg:hidden"
+            className={`grid size-11 place-items-center outline-none transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-cyan lg:hidden ${onDark ? "text-white" : "text-navy"}`}
           >
             {open ? <X size={20} /> : <Menu size={20} />}
           </button>

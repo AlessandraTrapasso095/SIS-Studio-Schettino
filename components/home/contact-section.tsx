@@ -18,13 +18,21 @@ export function ContactSection() {
   return (
     <section id="contatti" className="section-shell bg-white">
       <Container>
-        <div className="grid gap-10 border-b border-navy/12 pb-12 lg:grid-cols-12 lg:gap-12 lg:pb-16">
-          <Reveal className="lg:col-span-4">
+        <div className="max-w-[950px]">
+          <Reveal>
             <SectionLabel number="09">Contatti</SectionLabel>
-            <h2 className="heading-xl mt-10 text-navy">Rende,<br />Cosenza</h2>
+            <h2 className="heading-xl mt-8 text-navy">Rende, Cosenza</h2>
           </Reveal>
+        </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-7 lg:col-start-6">
+        <div className="mt-10 grid gap-10 border-y border-navy/12 py-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 lg:py-12">
+          <Reveal>
+            <p className="detail-label">Società</p>
+            <p className="mt-5 font-mono text-[0.62rem] uppercase leading-6 tracking-[0.18em] text-ink/48">
+              P.IVA 03849810787<br />REA – CS 260790
+            </p>
+          </Reveal>
+          <div className="contents">
             {contactColumns.map((column, index) => (
               <Reveal key={column.label} delay={index * 0.08}>
                 <p className="detail-label">{column.label}</p>
@@ -38,14 +46,9 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div className="grid gap-10 pt-10 lg:grid-cols-12 lg:gap-12 lg:pt-14">
-          <Reveal className="lg:col-span-4">
-            <p className="font-mono text-[0.62rem] uppercase leading-6 tracking-[0.18em] text-ink/42">
-              P.IVA 03849810787<br />REA – CS 260790
-            </p>
-          </Reveal>
-
-          <div className="lg:col-span-7 lg:col-start-6">
+        <div className="pt-8 sm:pt-10 lg:grid lg:grid-cols-[0.62fr_1.38fr] lg:gap-14">
+          <div className="hidden lg:block" aria-hidden="true" />
+          <div>
             <Reveal>
               <a
                 href="tel:+390984653529"

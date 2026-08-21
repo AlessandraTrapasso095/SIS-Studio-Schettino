@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
+import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
@@ -11,22 +11,18 @@ import { services } from "@/lib/content";
 export function Services() {
   const [active, setActive] = useState(0);
   const reduceMotion = useReducedMotion();
-  const current = services[active];
-
   return (
     <section id="servizi" className="section-shell bg-white">
       <Container>
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <div className="lg:col-span-4">
+        <div className="max-w-[900px]">
+          <div>
             <SectionLabel number="02">Competenze</SectionLabel>
-          </div>
-          <div className="lg:col-span-7 lg:col-start-6">
-            <h2 className="heading-xl text-navy">Servizi</h2>
+            <h2 className="heading-xl mt-8 text-navy">Servizi</h2>
           </div>
         </div>
 
-        <div className="mt-12 hidden border-t border-navy/12 pt-10 lg:grid lg:grid-cols-12 lg:gap-12 xl:gap-16">
-          <div className="lg:col-span-5">
+        <div className="mt-10 hidden border-t border-navy/12 pt-10 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:items-stretch lg:gap-12 xl:gap-16">
+          <div className="flex flex-col justify-center">
             {services.map((service, index) => {
               const isActive = active === index;
               return (
@@ -37,7 +33,7 @@ export function Services() {
                   onMouseEnter={() => setActive(index)}
                   onFocus={() => setActive(index)}
                   onClick={() => setActive(index)}
-                  className={`group flex w-full items-center gap-4 border-b border-navy/10 py-4 text-left outline-none transition-colors duration-400 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue ${
+                  className={`group flex w-full items-center gap-4 border-b border-navy/10 py-3.5 text-left outline-none transition-colors duration-400 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-blue ${
                     isActive ? "text-navy" : "text-navy/46 hover:text-navy/75"
                   }`}
                 >
@@ -57,26 +53,27 @@ export function Services() {
             })}
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden bg-paper lg:col-span-7">
-            <AnimatePresence mode="wait">
+          <div className="relative min-h-[520px] overflow-hidden bg-paper xl:min-h-[570px]">
+            {services.map((service, index) => (
               <motion.div
-                key={current.image}
+                key={service.image}
                 className="absolute inset-0"
-                initial={reduceMotion ? false : { opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={reduceMotion ? undefined : { opacity: 0 }}
-                transition={{ duration: 0.55, ease: "easeOut" }}
+                initial={false}
+                animate={{ opacity: active === index ? 1 : 0, scale: active === index ? 1 : 1.015 }}
+                transition={{ duration: reduceMotion ? 0 : 0.58, ease: [0.22, 1, 0.36, 1] }}
+                aria-hidden={active !== index}
               >
                 <Image
-                  src={current.image}
-                  alt={`Attività di ${current.title} dello Studio Schettino`}
+                  src={service.image}
+                  alt={`Attività di ${service.title} dello Studio Schettino`}
                   fill
                   className="object-cover"
-                  style={{ objectPosition: current.imagePosition ?? "center" }}
+                  style={{ objectPosition: service.imagePosition ?? "center" }}
                   sizes="58vw"
+                  preload={index === 0}
                 />
               </motion.div>
-            </AnimatePresence>
+            ))}
           </div>
         </div>
 
