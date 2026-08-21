@@ -5,3 +5,7 @@ out
 *.log
 *.tsbuildinfo
 .vercel
+
+# Local development instructions
+AGENTS.md
+CLAUDE.md
