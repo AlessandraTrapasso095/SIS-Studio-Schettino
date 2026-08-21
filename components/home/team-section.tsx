@@ -3,74 +3,138 @@
 import Image from "next/image";
 import { motion, useReducedMotion } from "motion/react";
 import { useState } from "react";
+
 import { Container } from "@/components/ui/container";
-import { SectionLabel } from "@/components/ui/section-label";
+import { SectionHeader } from "@/components/ui/section-header";
 import { teamMembers } from "@/lib/content";
 
 export function TeamSection() {
   const reduceMotion = useReducedMotion();
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [active, setActive] = useState(0);
 
   return (
     <section id="team" className="section-shell overflow-hidden bg-[#021326] text-white">
       <Container>
-        <div className="max-w-[900px]">
-          <SectionLabel number="03" light>People</SectionLabel>
-          <div>
-            <motion.h2
-              className="heading-xl mt-8 max-w-3xl text-white"
-              initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-              whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.7 }}
+        <SectionHeader
+          number="03"
+          eyebrow="People"
+          title="Il team."
+          description="L’unione fisica di vari professionisti, oggi sotto un unico nome e percorso."
+          light
+        />
+
+        <div className="mt-12 hidden min-h-[580px] grid-cols-[0.72fr_1.18fr] gap-12 border-t border-white/12 pt-10 lg:grid xl:min-h-[620px] xl:gap-16">
+          <div className="grid content-start grid-cols-2 gap-x-6">
+            {teamMembers.map((member, index) => {
+              const isActive = active === index;
+
+              return (
+                <button
+                  key={member.name}
+                  type="button"
+                  aria-pressed={isActive}
+                  aria-controls="team-active-person"
+                  onMouseEnter={() => setActive(index)}
+                  onFocus={() => setActive(index)}
+                  onClick={() => setActive(index)}
+                  className={`group flex min-h-14 items-center gap-3 border-b border-white/10 text-left outline-none transition-colors duration-500 focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan ${
+                    isActive ? "text-white" : "text-white/46 hover:text-white/75"
+                  }`}
+                >
+                  <span
+                    className={`w-5 shrink-0 font-mono text-[0.52rem] transition-colors duration-500 ${isActive ? "text-cyan" : "text-white/25"}`}
+                  >
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span className="text-[0.78rem] font-medium leading-tight tracking-[-0.01em] xl:text-sm">
+                    {member.name}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div
+            id="team-active-person"
+            aria-live="polite"
+            className="relative min-h-[540px] overflow-hidden border-b border-white/12 xl:min-h-[580px]"
+          >
+            <span
+              className="absolute bottom-[-10%] left-1/2 aspect-square w-[78%] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(103,185,220,0.18)_0%,rgba(103,185,220,0.055)_44%,transparent_72%)] blur-sm"
+              aria-hidden="true"
+            />
+
+            {teamMembers.map((member, index) => (
+              <motion.div
+                key={member.image}
+                className="absolute inset-x-0 bottom-0 top-0"
+                initial={false}
+                animate={{
+                  opacity: active === index ? 1 : 0,
+                  y: active === index ? 0 : 10,
+                }}
+                transition={{
+                  duration: reduceMotion ? 0 : 0.45,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                aria-hidden={active !== index}
+              >
+                <Image
+                  src={member.image}
+                  alt={active === index ? `${member.name}, ${member.role} dello Studio Schettino` : ""}
+                  fill
+                  className="object-contain object-bottom"
+                  sizes="(max-width: 1279px) 58vw, 720px"
+                />
+              </motion.div>
+            ))}
+
+            <motion.div
+              key={teamMembers[active].name}
+              className="absolute bottom-7 left-0 z-10 max-w-[16rem] bg-[#021326]/82 py-3 pr-6 backdrop-blur-sm"
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
-              Le persone<br />dietro lo studio.
-            </motion.h2>
-            <p className="mt-5 max-w-2xl text-base leading-7 text-white/58">
-              L’unione fisica di vari professionisti, oggi sotto un unico nome e percorso.
-            </p>
+              <p className="font-display text-2xl font-medium tracking-[-0.035em] text-white">
+                {teamMembers[active].name}
+              </p>
+              <p className="mt-2 text-[0.58rem] font-semibold uppercase tracking-[0.16em] text-cyan">
+                {teamMembers[active].role}
+              </p>
+            </motion.div>
           </div>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-x-4 gap-y-10 min-[350px]:grid-cols-2 sm:mt-16 sm:gap-x-6 sm:gap-y-12 lg:grid-cols-4 lg:gap-x-7 xl:grid-cols-5 xl:gap-x-6">
+        <div className="mt-12 grid grid-cols-2 gap-x-5 gap-y-10 border-t border-white/12 pt-8 md:grid-cols-3 lg:hidden sm:gap-x-8 sm:gap-y-12">
           {teamMembers.map((member, index) => (
             <motion.article
               key={member.name}
-              className={`group min-w-0 transition-opacity duration-500 ${hovered !== null && hovered !== index ? "opacity-55" : "opacity-100"}`}
+              className="group min-w-0"
               initial={reduceMotion ? false : { opacity: 0, y: 18 }}
               whileInView={reduceMotion ? undefined : { opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.18 }}
-              transition={{ duration: 0.6, delay: (index % 4) * 0.035 }}
-              onMouseEnter={() => setHovered(index)}
-              onMouseLeave={() => setHovered(null)}
+              transition={{ duration: 0.6, delay: (index % 3) * 0.04 }}
             >
-              <div className="relative aspect-[3/4] overflow-hidden border-b border-white/14">
+              <div className="relative aspect-[3/4] overflow-hidden border-b border-white/12">
                 <span
-                  className="absolute inset-x-[12%] bottom-[7%] aspect-square rounded-full bg-[radial-gradient(circle,rgba(103,185,220,0.2)_0%,rgba(103,185,220,0.06)_46%,transparent_72%)] opacity-60 blur-sm transition-opacity duration-500 group-hover:opacity-100"
+                  className="absolute inset-x-[8%] bottom-[2%] aspect-square rounded-full bg-[radial-gradient(circle,rgba(103,185,220,0.16)_0%,transparent_70%)]"
                   aria-hidden="true"
                 />
                 <Image
                   src={member.image}
                   alt={`${member.name}, ${member.role} dello Studio Schettino`}
                   fill
-                  loading="eager"
-                  className="object-contain object-bottom pt-4 opacity-[0.94] saturate-[0.9] transition-[transform,filter,opacity] duration-500 ease-out group-hover:-translate-y-2 group-hover:scale-[1.025] group-hover:opacity-100 group-hover:saturate-100 sm:pt-5"
-                  sizes="(max-width: 349px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 25vw, 20vw"
-                />
-                <span
-                  className="absolute inset-x-0 bottom-0 h-px origin-left scale-x-0 bg-cyan transition-transform duration-500 group-hover:scale-x-100"
-                  aria-hidden="true"
+                  className="object-contain object-bottom transition-transform duration-500 ease-out group-hover:-translate-y-1.5 group-hover:scale-[1.02]"
+                  sizes="(max-width: 767px) 50vw, (max-width: 1023px) 33vw, 25vw"
                 />
               </div>
-
-              <div className="pt-4">
-                <h3 className="font-display text-[clamp(1rem,1.35vw,1.2rem)] font-medium leading-tight tracking-[-0.025em] text-white transition-colors duration-300 group-hover:text-cyan">
-                  {member.name}
-                </h3>
-                <p className="mt-1.5 text-[0.58rem] font-semibold uppercase tracking-[0.14em] text-white/40">
-                  {member.role}
-                </p>
-              </div>
+              <h3 className="mt-4 font-display text-base font-medium leading-tight tracking-[-0.025em] text-white transition-colors duration-300 group-hover:text-cyan sm:text-lg">
+                {member.name}
+              </h3>
+              <p className="mt-1.5 text-[0.55rem] font-semibold uppercase tracking-[0.14em] text-white/42">
+                {member.role}
+              </p>
             </motion.article>
           ))}
         </div>

@@ -2,22 +2,19 @@ import Image from "next/image";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionLabel } from "@/components/ui/section-label";
+import { SectionHeader } from "@/components/ui/section-header";
 
 export function IntroStudio() {
   return (
     <section id="studio" className="section-shell bg-white">
       <Container>
-        <div className="max-w-[950px]">
-          <Reveal>
-            <SectionLabel number="01">Studio</SectionLabel>
-            <h2 className="heading-xl mt-8 text-navy">
-              Una realtà nuova e giovane. <span className="text-blue">In terra Calabra.</span>
-            </h2>
-          </Reveal>
-        </div>
+        <SectionHeader
+          number="01"
+          eyebrow="Studio"
+          title={<>Una realtà nuova e giovane. <span className="text-blue">In terra Calabra.</span></>}
+        />
 
-        <div className="mt-10 grid gap-10 border-t border-navy/10 pt-10 sm:mt-12 sm:pt-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-14">
+        <div className="mt-10 grid gap-10 border-t border-navy/10 pt-10 sm:mt-12 sm:pt-12 lg:grid-cols-[0.7fr_1fr] lg:gap-16">
           <div>
             <Reveal>
               <p className="body-lg text-ink/68">
@@ -43,12 +40,12 @@ export function IntroStudio() {
             </Reveal>
           </div>
 
-          <Reveal className="relative min-h-[360px] overflow-hidden bg-paper sm:min-h-[520px] lg:min-h-[570px]">
+          <Reveal clip className="relative aspect-[16/10] overflow-hidden bg-paper">
             <Image
               src="/images/studio/studio-work.jpg"
               alt="Attività di ispezione infrastrutturale dello Studio Schettino"
               fill
-              className="object-cover object-center transition-transform duration-700 hover:scale-[1.025]"
+              className="object-cover object-center transition-transform duration-700 hover:scale-[1.02]"
               sizes="(max-width: 1024px) 100vw, 58vw"
             />
           </Reveal>

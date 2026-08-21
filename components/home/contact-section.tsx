@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionLabel } from "@/components/ui/section-label";
+import { SectionHeader } from "@/components/ui/section-header";
 
 const contactColumns = [
   {
@@ -18,12 +18,7 @@ export function ContactSection() {
   return (
     <section id="contatti" className="section-shell bg-white">
       <Container>
-        <div className="max-w-[950px]">
-          <Reveal>
-            <SectionLabel number="09">Contatti</SectionLabel>
-            <h2 className="heading-xl mt-8 text-navy">Rende, Cosenza</h2>
-          </Reveal>
-        </div>
+        <SectionHeader number="09" eyebrow="Contatti" title="Rende, Cosenza." />
 
         <div className="mt-10 grid gap-10 border-y border-navy/12 py-10 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12 lg:py-12">
           <Reveal>
@@ -51,6 +46,15 @@ export function ContactSection() {
           <div>
             <Reveal>
               <a
+                href="mailto:segreteria@studioschettino.it"
+                className="contact-line group break-all"
+              >
+                <span>segreteria@studioschettino.it</span>
+                <ArrowUpRight className="contact-line__icon" />
+              </a>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <a
                 href="tel:+390984653529"
                 className="contact-line group"
               >
@@ -58,21 +62,12 @@ export function ContactSection() {
                 <ArrowUpRight className="contact-line__icon" />
               </a>
             </Reveal>
-            <Reveal delay={0.05}>
+            <Reveal delay={0.1}>
               <a
                 href="tel:+393299322456"
                 className="contact-line group"
               >
                 <span>+39 329 9322456</span>
-                <ArrowUpRight className="contact-line__icon" />
-              </a>
-            </Reveal>
-            <Reveal delay={0.1}>
-              <a
-                href="mailto:segreteria@studioschettino.it"
-                className="contact-line group break-all"
-              >
-                <span>segreteria@studioschettino.it</span>
                 <ArrowUpRight className="contact-line__icon" />
               </a>
             </Reveal>

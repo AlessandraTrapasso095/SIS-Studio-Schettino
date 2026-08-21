@@ -3,7 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionLabel } from "@/components/ui/section-label";
+import { SectionHeader } from "@/components/ui/section-header";
 import { newsItems } from "@/lib/content";
 
 export function NewsSection() {
@@ -12,11 +12,8 @@ export function NewsSection() {
   return (
     <section id="news" className="section-shell bg-white">
       <Container>
-        <div className="flex flex-col gap-8 border-b border-navy/12 pb-12 sm:flex-row sm:items-end sm:justify-between">
-          <div>
-            <SectionLabel number="07">News</SectionLabel>
-            <h2 className="heading-xl mt-8 text-navy">News</h2>
-          </div>
+        <div className="flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+          <SectionHeader number="07" eyebrow="News" title="News" />
           <ArrowLink
             href="http://www.studioschettino.it/notizie/"
             target="_blank"
@@ -26,7 +23,7 @@ export function NewsSection() {
           </ArrowLink>
         </div>
 
-        <div className="mt-12 grid gap-12 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
+        <div className="mt-10 grid gap-12 border-t border-navy/10 pt-10 lg:grid-cols-[1.25fr_0.75fr] lg:gap-16">
           <Reveal>
             <a
               href={featured.href}
@@ -39,7 +36,7 @@ export function NewsSection() {
                   src={featured.image}
                   alt={featured.title}
                   fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                  className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                   sizes="(max-width: 1024px) 100vw, 63vw"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-navy/55 via-transparent to-transparent" />
@@ -47,7 +44,7 @@ export function NewsSection() {
                   {featured.date}
                 </span>
               </div>
-              <div className="flex items-start justify-between gap-6 border-b border-navy/15 py-6 sm:py-8">
+              <div className="flex items-start justify-between gap-6 py-6 sm:py-8">
                 <div>
                   <h3 className="font-display text-3xl font-medium leading-tight tracking-[-0.045em] text-navy sm:text-4xl">
                     {featured.title}
@@ -77,7 +74,7 @@ export function NewsSection() {
                       src={item.image}
                       alt={item.title}
                       fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                      className="object-cover transition-transform duration-700 group-hover:scale-[1.02]"
                       sizes="(max-width: 1024px) 170px, (max-width: 1280px) 35vw, 170px"
                     />
                   </div>

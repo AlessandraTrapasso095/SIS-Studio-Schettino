@@ -7,22 +7,22 @@ export function RecruitingSection() {
   return (
     <section id="recruiting" className="bg-paper py-16 sm:py-20 lg:py-24">
       <Container>
-        <div className="grid gap-8 border-y border-navy/12 py-10 lg:grid-cols-12 lg:items-center lg:py-12">
-          <Reveal className="lg:col-span-4">
+        <div className="grid gap-8 border-t border-navy/10 py-10 lg:grid-cols-[1fr_1fr_auto] lg:items-center lg:gap-14 lg:py-12">
+          <Reveal>
             <SectionLabel number="08">Recruiting</SectionLabel>
             <h2 className="mt-6 font-display text-[clamp(2.1rem,3.5vw,3.5rem)] font-medium tracking-[-0.045em] text-navy">
               Lavorare con noi
             </h2>
           </Reveal>
 
-          <Reveal delay={0.06} className="lg:col-span-5">
+          <Reveal delay={0.06}>
             <p className="text-lg font-medium text-navy">BIM Specialist</p>
             <p className="mt-2 text-sm leading-7 text-ink/58">
               BIM Specialist per attività di studio in sede. Junior / Senior · Rende (CS).
             </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="lg:col-span-3 lg:text-right">
+          <Reveal delay={0.1} className="lg:text-right">
             <a
               href="http://www.studioschettino.it/recruiting/"
               target="_blank"

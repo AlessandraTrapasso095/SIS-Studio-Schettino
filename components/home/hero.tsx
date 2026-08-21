@@ -30,7 +30,7 @@ export function Hero() {
         />
       </motion.div>
 
-      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,19,38,0.72)_0%,rgba(2,19,38,0.34)_48%,rgba(2,19,38,0.08)_100%)]" />
+      <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(2,19,38,0.72)_0%,rgba(2,19,38,0.28)_48%,rgba(2,19,38,0.04)_100%)]" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#021326]/55 via-transparent to-[#021326]/10" />
 
       <Container className="relative z-10 pb-14 pt-32 sm:pb-20 lg:pb-24">
@@ -59,7 +59,7 @@ export function Hero() {
           </h1>
 
           <motion.p
-            className="mt-6 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/72 sm:text-xs"
+            className="mt-7 text-[0.65rem] font-semibold uppercase tracking-[0.2em] text-white/72 sm:text-xs"
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.5 }}
@@ -68,7 +68,7 @@ export function Hero() {
           </motion.p>
 
           <motion.div
-            className="mt-9 flex flex-wrap items-center gap-5"
+            className="mt-10 flex flex-wrap items-center gap-5"
             initial={reduceMotion ? false : { opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.62 }}

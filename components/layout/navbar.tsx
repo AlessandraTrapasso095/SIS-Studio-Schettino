@@ -67,8 +67,8 @@ export function Navbar() {
             />
           </a>
 
-          <div className="hidden items-center gap-5 lg:flex xl:gap-7">
-            <nav aria-label="Navigazione principale" className="flex items-center gap-5 xl:gap-7">
+          <div className="hidden items-center gap-6 lg:flex xl:gap-8">
+            <nav aria-label="Navigazione principale" className="flex items-center gap-6 xl:gap-8">
               {navItems.map((item) => (
                 <a key={item.href} href={item.href} className={`nav-link transition-colors duration-500 ${onDark ? "text-white" : "text-navy"}`}>
                   {item.label}

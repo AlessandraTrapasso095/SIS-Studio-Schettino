@@ -29,8 +29,8 @@ export const services: Service[] = [
 export const navItems = [
   { label: "Studio", href: "#studio" },
   { label: "Servizi", href: "#servizi" },
-  { label: "BIM", href: "#bim" },
   { label: "Team", href: "#team" },
+  { label: "BIM", href: "#bim" },
   { label: "News", href: "#news" },
   { label: "Contatti", href: "#contatti" },
 ];

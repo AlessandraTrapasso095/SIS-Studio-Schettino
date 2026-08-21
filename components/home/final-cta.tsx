@@ -35,7 +35,6 @@ export function FinalCta() {
             <ArrowUpRight size={16} className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
           </a>
         </div>
-        <div className="h-px bg-white/22" />
       </Container>
     </section>
   );

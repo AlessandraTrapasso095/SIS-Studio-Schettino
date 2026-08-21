@@ -1,8 +1,9 @@
 import Image from "next/image";
+
 import { ArrowLink } from "@/components/ui/arrow-link";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
-import { SectionLabel } from "@/components/ui/section-label";
+import { SectionHeader } from "@/components/ui/section-header";
 
 const criteria = ["Affidabilità", "Completezza e adeguatezza", "Compatibilità"];
 
@@ -10,8 +11,40 @@ export function VerificationSection() {
   return (
     <section id="verifiche" className="section-shell bg-white">
       <Container>
-        <div className="grid gap-12 lg:grid-cols-12 lg:items-center lg:gap-14">
-          <Reveal className="relative aspect-[16/10] overflow-hidden bg-paper lg:col-span-7">
+        <div className="grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center lg:gap-16">
+          <div>
+            <SectionHeader number="05" eyebrow="Controllo" title="Verifica dei progetti." />
+            <Reveal delay={0.05}>
+              <h3 className="mt-6 max-w-xl font-display text-[clamp(1.3rem,1.7vw,1.75rem)] font-medium leading-snug tracking-[-0.025em] text-navy">
+                Verifica preventiva della progettazione ai sensi dell’art. 42 D.Lgs. 36/2023
+              </h3>
+              <p className="mt-5 max-w-xl text-base leading-7 text-ink/62">
+                Ciascun elaborato progettuale viene controllato da un Ispettore,
+                professionista altamente qualificato nel garantire la correttezza e la
+                qualità del progetto.
+              </p>
+            </Reveal>
+
+            <Reveal delay={0.08} className="mt-8 grid gap-4 border-t border-navy/10 pt-6 sm:grid-cols-3 lg:grid-cols-1 xl:grid-cols-3">
+              {criteria.map((criterion) => (
+                <div key={criterion} className="flex items-start gap-3 text-sm leading-5 text-navy/68">
+                  <span className="mt-1.5 size-1.5 shrink-0 bg-blue" aria-hidden="true" />
+                  {criterion}
+                </div>
+              ))}
+            </Reveal>
+
+            <ArrowLink
+              href="http://www.studioschettino.it/verificheprogetti/"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-9"
+            >
+              Approfondisci
+            </ArrowLink>
+          </div>
+
+          <Reveal clip className="relative aspect-[16/10] overflow-hidden bg-paper">
             <Image
               src="/images/verification/verification-model.png"
               alt="Modello digitale sottoposto a verifica progettuale dallo Studio Schettino"
@@ -20,39 +53,6 @@ export function VerificationSection() {
               sizes="(max-width: 1024px) 100vw, 58vw"
             />
           </Reveal>
-
-          <div className="lg:col-span-5">
-            <Reveal>
-              <SectionLabel number="05">Controllo</SectionLabel>
-              <h2 className="heading-xl mt-8 text-navy">Verifica dei progetti</h2>
-              <h3 className="mt-6 font-display text-[clamp(1.35rem,2vw,2rem)] font-medium leading-snug tracking-[-0.03em] text-navy">
-                Verifica preventiva della progettazione ai sensi dell’art. 42 D.Lgs. 36/2023
-              </h3>
-              <p className="mt-5 text-base leading-7 text-ink/62 sm:leading-8">
-                Ciascun elaborato progettuale viene controllato da un Ispettore che è
-                un professionista operante in un settore specifico e pertanto altamente
-                qualificato nel garantire la massima correttezza e qualità del progetto stesso.
-              </p>
-            </Reveal>
-
-            <div className="mt-8 border-t border-navy/12">
-              {criteria.map((criterion) => (
-                <div key={criterion} className="flex items-center gap-3 border-b border-navy/10 py-3.5 text-sm text-navy/68">
-                  <span className="size-1.5 bg-blue" aria-hidden="true" />
-                  {criterion}
-                </div>
-              ))}
-            </div>
-
-            <ArrowLink
-              href="http://www.studioschettino.it/verificheprogetti/"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-8"
-            >
-              Approfondisci
-            </ArrowLink>
-          </div>
         </div>
       </Container>
     </section>

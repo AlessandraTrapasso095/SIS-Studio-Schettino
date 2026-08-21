@@ -5,7 +5,7 @@ import { motion, useReducedMotion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { useState } from "react";
 import { Container } from "@/components/ui/container";
-import { SectionLabel } from "@/components/ui/section-label";
+import { SectionHeader } from "@/components/ui/section-header";
 import { services } from "@/lib/content";
 
 export function Services() {
@@ -14,14 +14,9 @@ export function Services() {
   return (
     <section id="servizi" className="section-shell bg-white">
       <Container>
-        <div className="max-w-[900px]">
-          <div>
-            <SectionLabel number="02">Competenze</SectionLabel>
-            <h2 className="heading-xl mt-8 text-navy">Servizi</h2>
-          </div>
-        </div>
+        <SectionHeader number="02" eyebrow="Competenze" title="Servizi" />
 
-        <div className="mt-10 hidden border-t border-navy/12 pt-10 lg:grid lg:grid-cols-[0.8fr_1.2fr] lg:items-stretch lg:gap-12 xl:gap-16">
+        <div className="mt-10 hidden border-t border-navy/10 pt-10 lg:grid lg:grid-cols-[0.68fr_1fr] lg:items-center lg:gap-12 xl:gap-16">
           <div className="flex flex-col justify-center">
             {services.map((service, index) => {
               const isActive = active === index;
@@ -37,11 +32,14 @@ export function Services() {
                     isActive ? "text-navy" : "text-navy/46 hover:text-navy/75"
                   }`}
                 >
+                  <span className={`w-5 shrink-0 font-mono text-[0.54rem] transition-colors duration-400 ${isActive ? "text-blue" : "text-navy/30"}`}>
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
                   <span
-                    className={`h-1.5 w-1.5 shrink-0 transition-colors duration-400 ${isActive ? "bg-blue" : "bg-navy/16"}`}
+                    className={`h-1.5 w-1.5 shrink-0 transition-colors duration-400 ${isActive ? "bg-blue" : "bg-transparent"}`}
                     aria-hidden="true"
                   />
-                  <span className="flex-1 font-display text-[clamp(1.15rem,1.6vw,1.45rem)] font-medium tracking-[-0.025em]">
+                  <span className="flex-1 font-display text-[clamp(1.2rem,1.6vw,1.5rem)] font-medium tracking-[-0.025em]">
                     {service.title}
                   </span>
                   <ArrowUpRight
@@ -53,14 +51,14 @@ export function Services() {
             })}
           </div>
 
-          <div className="relative min-h-[520px] overflow-hidden bg-paper xl:min-h-[570px]">
+          <div className="relative aspect-[16/10] overflow-hidden bg-paper">
             {services.map((service, index) => (
               <motion.div
                 key={service.image}
                 className="absolute inset-0"
                 initial={false}
                 animate={{ opacity: active === index ? 1 : 0, scale: active === index ? 1 : 1.015 }}
-                transition={{ duration: reduceMotion ? 0 : 0.58, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: reduceMotion ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
                 aria-hidden={active !== index}
               >
                 <Image
@@ -91,7 +89,7 @@ export function Services() {
                   src={service.image}
                   alt={`Attività di ${service.title} dello Studio Schettino`}
                   fill
-                  className="object-cover transition-transform duration-700 hover:scale-[1.025]"
+                  className="object-cover transition-transform duration-700 hover:scale-[1.02]"
                   style={{ objectPosition: service.imagePosition ?? "center" }}
                   sizes="(max-width: 640px) 100vw, 50vw"
                 />
