@@ -1,0 +1,286 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist), Arial, sans-serif;
+  --font-display: var(--font-geist), Arial, sans-serif;
+  --font-mono: "SFMono-Regular", "SF Mono", Consolas, monospace;
+  --color-paper: #f2f4f3;
+  --color-ink: #141d29;
+  --color-navy: #04152c;
+  --color-blue: #07579a;
+  --color-cyan: #55c2e8;
+}
+
+:root {
+  color-scheme: light;
+  --page-gutter: clamp(1.25rem, 4vw, 5rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #04152c;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 6rem;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: hidden;
+  background: #f2f4f3;
+  color: #141d29;
+  font-family: var(--font-geist), Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #55c2e8;
+  color: #04152c;
+}
+
+a,
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+.skip-link {
+  position: fixed;
+  left: 1rem;
+  top: -5rem;
+  z-index: 100;
+  background: #55c2e8;
+  color: #04152c;
+  padding: 0.8rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+.heading-xl {
+  font-family: var(--font-geist), Arial, sans-serif;
+  font-size: clamp(2.8rem, 6.2vw, 7rem);
+  font-weight: 520;
+  line-height: 0.96;
+  letter-spacing: -0.065em;
+}
+
+.heading-xxl {
+  font-family: var(--font-geist), Arial, sans-serif;
+  font-size: clamp(4.1rem, 10vw, 11rem);
+  font-weight: 520;
+  line-height: 0.78;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+}
+
+.body-lg {
+  font-size: clamp(1rem, 1.25vw, 1.2rem);
+  line-height: 1.75;
+}
+
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-family: "SFMono-Regular", "SF Mono", Consolas, monospace;
+  font-size: 0.61rem;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.nav-link {
+  position: relative;
+  padding-block: 0.6rem;
+  font-size: 0.63rem;
+  font-weight: 650;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  transition: color 0.25s ease;
+}
+
+.nav-link::after {
+  position: absolute;
+  right: 0;
+  bottom: 0.22rem;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  content: "";
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-link:focus-visible {
+  outline: 2px solid #55c2e8;
+  outline-offset: 4px;
+}
+
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.64rem;
+  font-weight: 680;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  outline: none;
+}
+
+.arrow-link__icon {
+  display: grid;
+  width: 2.35rem;
+  height: 2.35rem;
+  place-items: center;
+  border: 1px solid currentColor;
+  transition: transform 0.35s ease, background-color 0.35s ease, color 0.35s ease;
+}
+
+.arrow-link:hover .arrow-link__icon,
+.arrow-link:focus-visible .arrow-link__icon {
+  transform: rotate(45deg);
+  background: #55c2e8;
+  color: #04152c;
+}
+
+.arrow-link:focus-visible {
+  outline: 2px solid #55c2e8;
+  outline-offset: 4px;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.24) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+.detail-label,
+.footer-label {
+  font-family: "SFMono-Regular", "SF Mono", Consolas, monospace;
+  font-size: 0.59rem;
+  font-weight: 650;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, #141d29 45%, transparent);
+}
+
+.footer-label {
+  color: rgba(255, 255, 255, 0.38);
+}
+
+footer a {
+  outline: none;
+  transition: color 0.25s ease;
+}
+
+footer a:hover,
+footer a:focus-visible {
+  color: #55c2e8;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  border-bottom: 1px solid rgba(4, 21, 44, 0.15);
+  padding-block: 1.25rem;
+  color: #04152c;
+  font-family: var(--font-geist), Arial, sans-serif;
+  font-size: clamp(1.45rem, 3.4vw, 3.5rem);
+  font-weight: 520;
+  line-height: 1.1;
+  letter-spacing: -0.045em;
+  outline: none;
+  transition: color 0.3s ease;
+}
+
+.contact-line:hover,
+.contact-line:focus-visible {
+  color: #07579a;
+}
+
+.contact-line:focus-visible {
+  outline: 2px solid #55c2e8;
+  outline-offset: 4px;
+}
+
+.contact-line__icon {
+  width: clamp(1.35rem, 2.3vw, 2.2rem);
+  height: clamp(1.35rem, 2.3vw, 2.2rem);
+  flex-shrink: 0;
+  transition: transform 0.35s ease;
+}
+
+.contact-line:hover .contact-line__icon,
+.contact-line:focus-visible .contact-line__icon {
+  transform: translate(0.2rem, -0.2rem);
+}
+
+.social-link {
+  border: 1px solid rgba(4, 21, 44, 0.15);
+  padding: 0.7rem 1rem;
+  color: rgba(4, 21, 44, 0.7);
+  font-size: 0.61rem;
+  font-weight: 650;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  outline: none;
+  transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-link:hover,
+.social-link:focus-visible {
+  border-color: #07579a;
+  background: #07579a;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .blueprint-grid {
+    background-size: 48px 48px;
+  }
+
+  .heading-xxl {
+    line-height: 0.84;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
