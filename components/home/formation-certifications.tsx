@@ -33,7 +33,7 @@ export function FormationCertifications() {
 
         <Reveal
           clip
-          className="relative mt-12 aspect-[16/6.2] min-h-[300px] overflow-hidden bg-navy"
+          className="relative mt-10 aspect-[4/3] overflow-hidden bg-navy sm:aspect-[16/9] lg:mt-12 lg:aspect-[16/6.2]"
         >
           <Image
             src="/images/training/formazione.jpg"

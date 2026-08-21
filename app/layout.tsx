@@ -12,6 +12,11 @@ export const metadata: Metadata = {
   title: "Studio Schettino — Concept demo non ufficiale",
   description:
     "Concept demo privata di restyling per Studio Schettino Ingegneria. Sito non ufficiale.",
+  icons: {
+    icon: "/logo/favicon.png",
+    shortcut: "/logo/favicon.png",
+    apple: "/logo/favicon.png",
+  },
   robots: {
     index: false,
     follow: false,
